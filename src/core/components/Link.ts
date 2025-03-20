@@ -1,7 +1,8 @@
-import { router } from "../../main";
+import AppRouter from "../../routes/AppRouter";
 import Component from "../template/Component";
 
-class Link extends Component<HTMLAnchorElement> {
+class Anchor extends Component<HTMLAnchorElement> {
+  private router: AppRouter = AppRouter.getInstance();
   constructor(text: string, href: string) {
     super(null, "a", "", text);
     this.node.href = href;
@@ -10,8 +11,9 @@ class Link extends Component<HTMLAnchorElement> {
 
   onClickHandler = (event: MouseEvent) => {
     event.preventDefault();
-    router.navigateTo(this.node.href);
+
+    this.router.navigateTo(this.node.href);
   };
 }
 
-export default Link;
+export default Anchor;

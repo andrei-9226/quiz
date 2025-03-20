@@ -1,5 +1,5 @@
 import Component from "../template/Component";
-import Link from "./Link";
+import Anchor from "./Link";
 
 const links = [
   {
@@ -20,11 +20,13 @@ const links = [
   },
 ];
 
-class Header extends Component<HTMLElement> {
+class Navigation extends Component<HTMLHeadElement> {
   constructor() {
     super(null, "header", "navigation");
 
-    const listLinks = links.map(({ text, href }) => new Link(text, href).node);
+    const listLinks = links.map(
+      ({ text, href }) => new Anchor(text, href).node
+    );
 
     listLinks.forEach((link) => {
       this.node.appendChild<HTMLAnchorElement>(link);
@@ -32,4 +34,4 @@ class Header extends Component<HTMLElement> {
   }
 }
 
-export default Header;
+export default Navigation;
