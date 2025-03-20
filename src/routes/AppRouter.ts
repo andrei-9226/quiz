@@ -1,3 +1,4 @@
+import { unmountEvent } from "../core/events/LifeCycle";
 import Page from "../core/template/Page";
 import ErrorPage from "../pages/Error";
 import { routes } from "./routes";
@@ -35,6 +36,8 @@ class AppRouter {
     const urlPath = window.location.pathname;
 
     const route = this.routes[urlPath];
+
+    // this.currentPage?.dispatchEvent(unmountEvent);
 
     if (route) {
       this.currentPage = route.page.node;

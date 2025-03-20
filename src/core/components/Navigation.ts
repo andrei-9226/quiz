@@ -22,7 +22,7 @@ const links = [
 
 class Navigation extends Component<HTMLHeadElement> {
   constructor() {
-    super(null, "header");
+    super(null, "header", "navigation");
 
     const listLinks = links.map(
       ({ text, href }) => new Anchor(text, href).node
