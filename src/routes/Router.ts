@@ -1,11 +1,10 @@
 import { Router } from "./types/types";
 
 class AppRouter {
-  constructor(
-    private rootApp: HTMLElement,
-    private routes: Router,
-    private errorPage: HTMLElement
-  ) {
+  public currentPage: HTMLElement | null = null;
+  private routeChangeListeners: Function[] = [];
+
+  constructor(private routes: Router, private errorPage: HTMLElement) {
     this.initRouter();
   }
 
@@ -13,20 +12,7 @@ class AppRouter {
     document.addEventListener("DOMContentLoaded", () => {
       window.addEventListener("popstate", this.router);
     });
-    this.addListenerForAnchors();
     this.router();
-  };
-
-  addListenerForAnchors = () => {
-    document.querySelectorAll("a").forEach((anchor) => {
-      anchor.addEventListener("click", (event) => {
-        event.preventDefault();
-        const href = anchor.getAttribute("href");
-        if (href) {
-          this.navigateTo(href);
-        }
-      });
-    });
   };
 
   navigateTo = (url: string) => {
@@ -38,15 +24,18 @@ class AppRouter {
     const urlPath = window.location.pathname;
 
     const route = this.routes[urlPath];
-    let page = null;
-    if (route) {
-      page = route.page();
-    } else {
-      page = this.errorPage;
-    }
-    this.rootApp.innerHTML = "";
 
-    this.rootApp.append(page);
+    if (route) {
+      this.currentPage = route.page;
+    } else {
+      this.currentPage = this.errorPage;
+    }
+
+    this.routeChangeListeners.forEach((listener) => listener());
+  };
+
+  addListerToRouter = (callback: Function) => {
+    this.routeChangeListeners.push(callback);
   };
 }
 

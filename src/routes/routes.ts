@@ -15,21 +15,21 @@ ErrorPage.innerText = "Page not found";
 export const routes: Router = {
   [PATH.MAIN_PAGE]: {
     path: PATH.MAIN_PAGE,
-    page: () => MainPage,
+    page: MainPage,
   },
 
   [PATH.ARTISTS]: {
     path: PATH.ARTISTS,
-    page: () => ArtistsPage,
+    page: ArtistsPage,
   },
 
   [PATH.PICTURES]: {
     path: PATH.PICTURES,
-    page: () => PicturesPage,
+    page: PicturesPage,
   },
 
   [PATH.SETTINGS]: {
     path: PATH.SETTINGS,
-    page: () => SettingsPage,
+    page: SettingsPage,
   },
 };

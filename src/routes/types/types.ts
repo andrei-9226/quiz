@@ -7,7 +7,7 @@ export const enum PATH {
 
 export type Route = {
   path: PATH;
-  page: () => HTMLElement;
+  page: HTMLElement;
 };
 
 export type Router = { [key: string]: Route };

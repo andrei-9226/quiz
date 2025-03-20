@@ -1,22 +1,34 @@
 import AppRouter from "../routes/Router";
-import { ErrorPage, routes } from "../routes/routes";
+import Header from "./components/Header";
 
 class App {
   private root: HTMLElement;
+  private router: AppRouter;
 
-  constructor(root: HTMLElement) {
+  constructor(root: HTMLElement, router: AppRouter) {
     this.root = root;
+    this.router = router;
     this.initApp();
   }
 
   initApp() {
-    new AppRouter(this.root, routes, ErrorPage);
-    // router.addListener()
+    this.router.addListerToRouter(this.render);
+    this.headerRender();
   }
 
-  //   render() {
-  //     this.root.append(this.currentPage);
-  //   }
+  headerRender = () => {
+    document.body.prepend(new Header().node);
+  };
+
+  rootRender = () => {
+    const page = this.router.currentPage;
+    this.root.innerHTML = ``;
+    page && this.root.append(page);
+  };
+
+  render = () => {
+    this.rootRender();
+  };
 }
 
 export default App;
