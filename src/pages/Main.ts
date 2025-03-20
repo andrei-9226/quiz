@@ -1,8 +1,10 @@
-class MainPage {
+import Page from "../core/template/Page";
 
-    render() {
-        return `<h1>Main page</h1>`
-    }
+class MainPage extends Page {
+  constructor() {
+    super();
+    this.node.innerHTML = "<h1>Main page</h1>";
+  }
 }
 
 export default MainPage;

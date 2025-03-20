@@ -1,35 +1,30 @@
+import ArtistPage from "../pages/Artist";
+import MainPage from "../pages/Main";
+import PicturesPage from "../pages/Pictures";
+import SettingsPage from "../pages/Settings";
 import { PATH, Router } from "./types/types";
 
-export const MainPage = document.createElement("h1");
-MainPage.innerText = "Main page";
-const ArtistsPage = document.createElement("h1");
-ArtistsPage.innerText = "Artists page";
-const PicturesPage = document.createElement("h1");
-PicturesPage.innerText = "Pictures page";
-const SettingsPage = document.createElement("h1");
-SettingsPage.innerText = "Settings page";
-
-export const ErrorPage = document.createElement("h1");
-ErrorPage.innerText = "Page not found";
+// export const ErrorPage = document.createElement("h1");
+// ErrorPage.innerText = "Page not found";
 
 export const routes: Router = {
   [PATH.MAIN_PAGE]: {
     path: PATH.MAIN_PAGE,
-    page: MainPage,
+    page: new MainPage(),
   },
 
   [PATH.ARTISTS]: {
     path: PATH.ARTISTS,
-    page: ArtistsPage,
+    page: new ArtistPage(),
   },
 
   [PATH.PICTURES]: {
     path: PATH.PICTURES,
-    page: PicturesPage,
+    page: new PicturesPage(),
   },
 
   [PATH.SETTINGS]: {
     path: PATH.SETTINGS,
-    page: SettingsPage,
+    page: new SettingsPage(),
   },
 };

@@ -1,4 +1,4 @@
-import AppRouter from "../routes/Router";
+import AppRouter from "../routes/AppRouter";
 import Header from "./components/Header";
 
 class App {

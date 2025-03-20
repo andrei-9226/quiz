@@ -1,10 +1,11 @@
+import Page from "../core/template/Page";
 import { Router } from "./types/types";
 
 class AppRouter {
   public currentPage: HTMLElement | null = null;
   private routeChangeListeners: Function[] = [];
 
-  constructor(private routes: Router, private errorPage: HTMLElement) {
+  constructor(private routes: Router, private errorPage: Page) {
     this.initRouter();
   }
 
@@ -26,9 +27,9 @@ class AppRouter {
     const route = this.routes[urlPath];
 
     if (route) {
-      this.currentPage = route.page;
+      this.currentPage = route.page.node;
     } else {
-      this.currentPage = this.errorPage;
+      this.currentPage = this.errorPage.node;
     }
 
     this.routeChangeListeners.forEach((listener) => listener());

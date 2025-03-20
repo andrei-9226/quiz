@@ -1,3 +1,5 @@
+import Page from "../../core/template/Page";
+
 export const enum PATH {
   MAIN_PAGE = "/",
   ARTISTS = "/artists",
@@ -7,7 +9,7 @@ export const enum PATH {
 
 export type Route = {
   path: PATH;
-  page: HTMLElement;
+  page: Page;
 };
 
 export type Router = { [key: string]: Route };
