@@ -1,5 +1,5 @@
 import AppRouter from "../routes/AppRouter";
-import Header from "./components/Header";
+import Navigation from "./components/Navigation";
 
 class App {
   private root: HTMLElement;
@@ -17,7 +17,7 @@ class App {
   }
 
   headerRender = () => {
-    document.body.prepend(new Header().node);
+    document.body.prepend(new Navigation().node);
   };
 
   rootRender = () => {

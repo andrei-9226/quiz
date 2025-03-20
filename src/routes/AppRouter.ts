@@ -1,12 +1,22 @@
 import Page from "../core/template/Page";
+import ErrorPage from "../pages/Error";
+import { routes } from "./routes";
 import { Router } from "./types/types";
 
 class AppRouter {
+  private static instance: AppRouter;
   public currentPage: HTMLElement | null = null;
   private routeChangeListeners: Function[] = [];
 
-  constructor(private routes: Router, private errorPage: Page) {
+  private constructor(private routes: Router, private errorPage: Page) {
     this.initRouter();
+  }
+
+  public static getInstance(): AppRouter {
+    if (!AppRouter.instance) {
+      AppRouter.instance = new AppRouter(routes, new ErrorPage());
+    }
+    return AppRouter.instance;
   }
 
   initRouter = () => {
