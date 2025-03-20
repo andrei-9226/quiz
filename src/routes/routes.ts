@@ -4,9 +4,6 @@ import PicturesPage from "../pages/Pictures";
 import SettingsPage from "../pages/Settings";
 import { PATH, Router } from "./types/types";
 
-// export const ErrorPage = document.createElement("h1");
-// ErrorPage.innerText = "Page not found";
-
 export const routes: Router = {
   [PATH.MAIN_PAGE]: {
     path: PATH.MAIN_PAGE,

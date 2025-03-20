@@ -22,10 +22,10 @@ const links = [
 
 class Header extends Component<HTMLElement> {
   constructor() {
-    super(null, "header");
+    super(null, "header", "navigation");
 
     const listLinks = links.map(({ text, href }) => new Link(text, href).node);
-    
+
     listLinks.forEach((link) => {
       this.node.appendChild<HTMLAnchorElement>(link);
     });

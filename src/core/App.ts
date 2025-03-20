@@ -1,5 +1,6 @@
 import AppRouter from "../routes/AppRouter";
 import Header from "./components/Header";
+import { mountEvent } from "./events/LifeCycle";
 
 class App {
   private root: HTMLElement;
@@ -23,6 +24,8 @@ class App {
   rootRender = () => {
     const page = this.router.currentPage;
     this.root.innerHTML = ``;
+
+    // page?.dispatchEvent(mountEvent);
     page && this.root.append(page);
   };
 
